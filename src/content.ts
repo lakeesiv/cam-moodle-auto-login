@@ -12,9 +12,9 @@ setTimeout(() => {
       clickLoginByRaven();
       break;
     case "raven":
-      clickRavenAuthLogin();
+      clickRavenAuthLogin("meh");
       break;
     default:
       break;
   }
-}, 500);
+}, 200);
