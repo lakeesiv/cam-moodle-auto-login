@@ -1,3 +1,6 @@
-export interface Request {
-  type: "TAB_UPDATED";
+export interface SetPrevPage {
+  type: "SetPrevPage";
+  url: string;
 }
+
+export type Request = SetPrevPage;
