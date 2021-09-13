@@ -26,6 +26,7 @@
   "permissions": [
     "storage",
     "cookies",
+    "tabs",
     "https://raven.cam.ac.uk/auth/*",
     "https://www.vle.cam.ac.uk/login/*"
   ]
