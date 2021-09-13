@@ -1,12 +1,18 @@
-// This file is injected as a content script
-setTimeout(() => {
-  const loginByRavenButton: HTMLElement = document.getElementsByClassName(
-    "btn btn-secondary btn-lg btn-block mt-3"
-  )[0] as HTMLElement;
-  loginByRavenButton.click();
+import { clickLoginByRaven } from "./utils/clickLoginByRaven";
+import { clickRavenAuthLogin } from "./utils/clickRavenAuthLogin";
+import { detectPage } from "./utils/detectPage";
 
-  const ravenLogInButton: HTMLElement = document.getElementsByClassName(
-    "campl-btn"
-  )[0] as HTMLElement;
-  ravenLogInButton.click();
+setTimeout(() => {
+  const page = detectPage(window.location.toString());
+
+  switch (page) {
+    case "moodle":
+      clickLoginByRaven();
+      break;
+    case "raven":
+      clickRavenAuthLogin();
+      break;
+    default:
+      break;
+  }
 }, 500);
