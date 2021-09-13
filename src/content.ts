@@ -1,6 +1,8 @@
-import { clickLoginByRaven } from "./utils/clickLoginByRaven";
-import { clickRavenAuthLogin } from "./utils/clickRavenAuthLogin";
-import { detectPage } from "./utils/detectPage";
+import {
+  clickLoginByRaven,
+  clickRavenAuthLogin,
+  detectPage,
+} from "./utils/index";
 
 setTimeout(() => {
   const page = detectPage(window.location.toString());
