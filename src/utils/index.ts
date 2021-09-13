@@ -11,10 +11,18 @@ export const clickLoginByRaven = () => {
 
 export const clickRavenAuthLogin = () => {
   try {
-    const ravenLogInButton: HTMLElement = document.getElementsByClassName(
-      "campl-btn"
-    )[0] as HTMLElement;
-    ravenLogInButton.click();
+    const errorMessageElement = document.getElementsByClassName("error")[0] as
+      | HTMLElement
+      | undefined;
+
+    if (!errorMessageElement) {
+      const ravenLogInButton: HTMLElement = document.getElementsByClassName(
+        "campl-btn"
+      )[0] as HTMLElement;
+      ravenLogInButton.click();
+    } else {
+      console.log(errorMessageElement.innerText);
+    }
   } catch (error) {
     console.log("error in raven page", error);
   }
