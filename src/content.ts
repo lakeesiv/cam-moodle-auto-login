@@ -1,3 +1,4 @@
+import { SetPrevPage } from "./types";
 import {
   clickLoginByRaven,
   clickRavenAuthLogin,
@@ -6,6 +7,11 @@ import {
 
 setTimeout(() => {
   const page = detectPage(window.location.toString());
+  const prevURLObject: SetPrevPage = {
+    type: "SetPrevPage",
+    url: window.location.toString(),
+  };
+  chrome.runtime.sendMessage(prevURLObject);
 
   switch (page) {
     case "moodle":
