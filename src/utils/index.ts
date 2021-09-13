@@ -32,7 +32,7 @@ export const clickRavenAuthLogin = (password: string) => {
 export const detectPage = (url: string): "raven" | "moodle" | null => {
   return url.includes("raven")
     ? "raven"
-    : url.includes("vle")
+    : url.includes("vle") && url.includes("login")
     ? "moodle"
     : null;
 };
