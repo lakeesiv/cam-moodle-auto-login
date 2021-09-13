@@ -3,4 +3,4 @@ export interface SetPrevPage {
   url: string;
 }
 
-export type Request = SetPrevPage;
+export type MessageTypes = SetPrevPage;
