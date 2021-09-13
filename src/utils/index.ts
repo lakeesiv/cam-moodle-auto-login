@@ -30,9 +30,9 @@ export const clickRavenAuthLogin = (password: string) => {
 };
 
 export const detectPage = (url: string): "raven" | "moodle" | null => {
-  return url.includes("raven")
+  return url.includes("raven") && url.includes("vle")
     ? "raven"
-    : url.includes("vle") && url.includes("login")
+    : url === "https://www.vle.cam.ac.uk/login/index.php"
     ? "moodle"
     : null;
 };
