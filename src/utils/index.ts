@@ -9,13 +9,14 @@ export const clickLoginByRaven = () => {
   }
 };
 
-export const clickRavenAuthLogin = () => {
+export const clickRavenAuthLogin = (password: string) => {
   try {
     const errorMessageElement = document.getElementsByClassName("error")[0] as
       | HTMLElement
       | undefined;
 
     if (!errorMessageElement) {
+      injectPassword(password);
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
         "campl-btn"
       )[0] as HTMLElement;
@@ -34,4 +35,12 @@ export const detectPage = (url: string): "raven" | "moodle" | null => {
     : url.includes("vle")
     ? "moodle"
     : null;
+};
+
+const injectPassword = (password: string) => {
+  try {
+    document.getElementById("pwd")?.setAttribute("value", password);
+  } catch (error) {
+    console.log("error in injecting password", error);
+  }
 };
