@@ -11,7 +11,9 @@ setTimeout(() => {
     type: "SetPrevPage",
     url: window.location.toString(),
   };
-  chrome.runtime.sendMessage(prevURLObject);
+  if (!page) {
+    chrome.runtime.sendMessage(prevURLObject);
+  }
 
   switch (page) {
     case "moodle":
