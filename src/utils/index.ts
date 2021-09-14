@@ -1,3 +1,7 @@
+import { config } from "dotenv";
+import aes256 from "aes256";
+import { SetEncrpytedPassword } from "../types";
+config();
 export const clickLoginByRaven = () => {
   try {
     const loginByRavenButton: HTMLElement = document.getElementsByClassName(
@@ -43,4 +47,18 @@ const injectPassword = (password: string) => {
   } catch (error) {
     console.log("error in injecting password", error);
   }
+};
+
+const sendEncryptedPassword = (password: string) => {
+  const encryptedPassword: string = aes256.encrypt(
+    process.env.ENCRYPTION_KEY,
+    password
+  );
+
+  const SetEncrpytedPasswordObject: SetEncrpytedPassword = {
+    type: "SetEncrpytedPassword",
+    encryptedPassword: encryptedPassword,
+  };
+
+  chrome.runtime.sendMessage(SetEncrpytedPasswordObject);
 };
