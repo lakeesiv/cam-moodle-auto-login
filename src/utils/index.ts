@@ -41,7 +41,7 @@ export const detectPage = (url: string): "raven" | "moodle" | null => {
     : null;
 };
 
-const injectPassword = (password: string) => {
+export const injectPassword = (password: string) => {
   try {
     document.getElementById("pwd")?.setAttribute("value", password);
   } catch (error) {
@@ -49,7 +49,7 @@ const injectPassword = (password: string) => {
   }
 };
 
-const sendEncryptedPassword = (password: string) => {
+export const sendEncryptedPassword = (password: string) => {
   const encryptedPassword: string = aes256.encrypt(
     process.env.ENCRYPTION_KEY,
     password
@@ -62,3 +62,6 @@ const sendEncryptedPassword = (password: string) => {
 
   chrome.runtime.sendMessage(SetEncrpytedPasswordObject);
 };
+
+export const decryptEncryptedPassword = (encryptedPassword: string) =>
+  aes256.decrypt(process.env.ENCRYPTION_KEY, encryptedPassword);
