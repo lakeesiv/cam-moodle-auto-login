@@ -7,7 +7,7 @@
 yarn.lock
 # testing
 /coverage
-
+.env
 # production
 /build
 /dist
