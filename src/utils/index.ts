@@ -1,7 +1,10 @@
-import { config } from "dotenv";
-import aes256 from "aes256";
 import { SetEncrpytedPassword } from "../types";
-config();
+import { cipher, decipher } from "./crypto";
+
+const secret = "SECRET";
+const Cipher = cipher(secret);
+const Decipher = decipher(secret);
+
 export const clickLoginByRaven = () => {
   try {
     const loginByRavenButton: HTMLElement = document.getElementsByClassName(
@@ -50,18 +53,13 @@ export const injectPassword = (password: string) => {
 };
 
 export const sendEncryptedPassword = (password: string) => {
-  const encryptedPassword: string = aes256.encrypt(
-    process.env.ENCRYPTION_KEY,
-    password
-  );
-
   const SetEncrpytedPasswordObject: SetEncrpytedPassword = {
     type: "SetEncrpytedPassword",
-    encryptedPassword: encryptedPassword,
+    encryptedPassword: Cipher(password) as string,
   };
 
   chrome.runtime.sendMessage(SetEncrpytedPasswordObject);
 };
 
 export const decryptEncryptedPassword = (encryptedPassword: string) =>
-  aes256.decrypt(process.env.ENCRYPTION_KEY, encryptedPassword);
+  Decipher(encryptedPassword) as string;
