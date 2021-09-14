@@ -35,6 +35,7 @@
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "aes256": "^1.1.0",
     "framer-motion": "^4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
