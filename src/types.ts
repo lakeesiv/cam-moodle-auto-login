@@ -3,4 +3,9 @@ export interface SetPrevPage {
   url: string;
 }
 
-export type MessageTypes = SetPrevPage;
+export interface SetEncrpytedPassword {
+  type: "SetEncrpytedPassword";
+  encryptedPassword: string;
+}
+
+export type MessageTypes = SetPrevPage | SetEncrpytedPassword;
