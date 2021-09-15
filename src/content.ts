@@ -1,7 +1,8 @@
-import { SetPrevPage } from "./types";
+import { Get, MessageTypes, SetPrevPage } from "./types";
 import {
   clickLoginByRaven,
   clickRavenAuthLogin,
+  decryptEncryptedPassword,
   detectPage,
 } from "./utils/index";
 
@@ -13,9 +14,21 @@ setTimeout(() => {
       clickLoginByRaven();
       break;
     case "raven":
-      clickRavenAuthLogin("meh");
+      chrome.runtime.sendMessage({ type: "GetEncryptedPassword" } as Get);
       break;
     default:
       break;
   }
+  chrome.runtime.onMessage.addListener((message: MessageTypes) => {
+    console.log(message);
+    switch (message.type) {
+      case "ReturnEncryptedPassword":
+        console.log(decryptEncryptedPassword(message.encryptedPassword));
+        const password = decryptEncryptedPassword(message.encryptedPassword);
+        if (page === "raven") clickRavenAuthLogin(password);
+
+      default:
+        break;
+    }
+  });
 }, 200);
