@@ -8,4 +8,8 @@ export interface SetEncrpytedPassword {
   encryptedPassword: string;
 }
 
-export type MessageTypes = SetPrevPage | SetEncrpytedPassword;
+export interface Get {
+  type: "GetEncryptedPassword";
+}
+
+export type MessageTypes = SetPrevPage | SetEncrpytedPassword | Get;
