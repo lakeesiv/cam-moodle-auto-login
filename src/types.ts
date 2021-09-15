@@ -20,4 +20,8 @@ export interface ReturnEncryptedPassword {
 export interface EncryptedPasswordObject {
   encryptedPassword: string;
 }
-export type MessageTypes = SetPrevPage | SetEncrpytedPassword | Get;
+export type MessageTypes =
+  | SetPrevPage
+  | SetEncrpytedPassword
+  | Get
+  | ReturnEncryptedPassword;
