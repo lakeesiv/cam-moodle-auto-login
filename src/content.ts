@@ -7,13 +7,6 @@ import {
 
 setTimeout(() => {
   const page = detectPage(window.location.toString());
-  const prevURLObject: SetPrevPage = {
-    type: "SetPrevPage",
-    url: window.location.toString(),
-  };
-  if (!page) {
-    chrome.runtime.sendMessage(prevURLObject);
-  }
 
   switch (page) {
     case "moodle":
