@@ -12,6 +12,11 @@ export interface Get {
   type: "GetEncryptedPassword";
 }
 
+export interface ReturnEncryptedPassword {
+  type: "ReturnEncryptedPassword";
+  encryptedPassword: string;
+}
+
 export interface EncryptedPasswordObject {
   encryptedPassword: string;
 }
