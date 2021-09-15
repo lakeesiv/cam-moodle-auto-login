@@ -12,4 +12,7 @@ export interface Get {
   type: "GetEncryptedPassword";
 }
 
+export interface EncryptedPasswordObject {
+  encryptedPassword: string;
+}
 export type MessageTypes = SetPrevPage | SetEncrpytedPassword | Get;
