@@ -16,7 +16,7 @@ const theme = extendTheme({ config });
 
 var mountNode = document.getElementById("popup");
 ReactDOM.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
   </ChakraProvider>,
