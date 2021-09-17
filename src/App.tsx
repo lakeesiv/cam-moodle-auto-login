@@ -1,21 +1,18 @@
-import React from "react";
+import { Box, Button, Input } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { sendEncryptedPassword } from "./utils";
 
 const App = () => {
+  const [password, setPassword] = useState<string>("");
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Box>
+        <Input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
+        <Button onClick={() => sendEncryptedPassword(password)}></Button>
+      </Box>
     </div>
   );
 };
