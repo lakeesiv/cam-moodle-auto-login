@@ -1,5 +1,6 @@
 import { Box, Button, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
+import PasswordDrawer from "./components/PasswordDrawer";
 import { sendEncryptedPassword } from "./utils";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Button onClick={() => sendEncryptedPassword(password)}>
           Set Password
         </Button>
+        <PasswordDrawer />
       </Box>
     </div>
   );
