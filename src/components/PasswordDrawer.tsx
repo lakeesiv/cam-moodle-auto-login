@@ -1,22 +1,47 @@
 import { FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
-import { Stack, Box } from "@chakra-ui/layout";
+import { Box, Stack } from "@chakra-ui/layout";
 import {
   Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
   DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
 } from "@chakra-ui/modal";
-import { Button, Select, Textarea, useDisclosure } from "@chakra-ui/react";
+import { Button, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { ToastType } from "../types";
 import { sendEncryptedPassword } from "../utils";
+
+const handleSubmit = (password: string, toast: ToastType) => {
+  if (password) {
+    sendEncryptedPassword(password);
+    toast({
+      title: "Sucess",
+      description: "Password has been encrypted and stored in local storage",
+      status: "success",
+      duration: 3000,
+      position: "top-right",
+      isClosable: true,
+    });
+  } else {
+    toast({
+      title: "Fail",
+      description: "Make sure password field is not empty",
+      status: "error",
+      duration: 3000,
+      position: "top-right",
+      isClosable: true,
+    });
+  }
+};
 
 const PasswordDrawer: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [password, setPassword] = useState<string>("");
+  const toast = useToast();
 
   return (
     <>
@@ -47,7 +72,7 @@ const PasswordDrawer: React.FC = () => {
           </DrawerBody>
 
           <DrawerFooter borderTopWidth="1px">
-            <Button mr={3} onClick={() => sendEncryptedPassword(password)}>
+            <Button mr={3} onClick={() => handleSubmit(password, toast)}>
               Set Password
             </Button>
           </DrawerFooter>
