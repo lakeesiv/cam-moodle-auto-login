@@ -1,23 +1,22 @@
-import { Box, Button, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Flex, Link } from "@chakra-ui/react";
+import React from "react";
 import PasswordDrawer from "./components/PasswordDrawer";
-import { sendEncryptedPassword } from "./utils";
 
 const App = () => {
-  const [password, setPassword] = useState<string>("");
   return (
     <div className="App">
       <Box w="xl" h="xl" bgColor="gray.900" p={4}>
-        <Input
-          p={2}
-          bgColor="gray.800"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        ></Input>
-        <Button onClick={() => sendEncryptedPassword(password)}>
-          Set Password
-        </Button>
-        <PasswordDrawer />
+        <Flex direction="column" h="full" w="full">
+          <PasswordDrawer />
+          <Box mt="auto">
+            <a
+              href="https://github.com/LakeeSiv/cam-moodle-auto-login"
+              target="_blank"
+            >
+              <Link>LakeeSiv/cam-moodle-auto-login</Link>
+            </a>
+          </Box>
+        </Flex>
       </Box>
     </div>
   );
