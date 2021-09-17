@@ -39,6 +39,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.2.0",
     "universal-cookie": "^4.0.4"
   }
 }
