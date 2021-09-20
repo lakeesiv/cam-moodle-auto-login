@@ -28,6 +28,10 @@ export interface Get {
   type: "GetEncrpytedLoginDetails" | "GetLoginDetailsPresent";
 }
 
+export interface RemoveData {
+  type: "RemoveData";
+}
+
 export interface ReturnEncryptedLoginDetails {
   type: "ReturnEncryptedLoginDetails";
   encryptedLoginDetails: encryptedLoginDetails;
@@ -47,4 +51,5 @@ export type MessageTypes =
   | SetPrevPage
   | Get
   | SetEncrpytedLoginDetails
-  | ReturnEncryptedLoginDetails;
+  | ReturnEncryptedLoginDetails
+  | RemoveData;

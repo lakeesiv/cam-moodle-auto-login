@@ -42,6 +42,9 @@ chrome.runtime.onMessage.addListener(
           sendResponse(present);
         });
         break;
+      case "RemoveData":
+        chrome.storage.local.clear(() => {});
+        break;
       default:
         break;
     }
