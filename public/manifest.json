@@ -1,6 +1,6 @@
 {
-  "name": "Extension",
-  "description": "Boiler Plate",
+  "name": "Cam Moodle Auto Login",
+  "description": "Automatically relogs you into moodle, after session timeout",
   "manifest_version": 2,
   "version": "1.0.0",
   "icons": {
