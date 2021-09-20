@@ -1,3 +1,4 @@
+import { secret_key } from "../secret";
 import {
   encryptedLoginDetails,
   loginDetails,
@@ -5,7 +6,7 @@ import {
 } from "../types";
 import { cipher, decipher } from "./crypto";
 
-const secret = "SECRET";
+const secret = secret_key;
 const Cipher = cipher(secret);
 const Decipher = decipher(secret);
 
