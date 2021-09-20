@@ -24,26 +24,13 @@ export interface SetEncrpytedLoginDetails {
   encryptedLoginDetails: encryptedLoginDetails;
 }
 
-export interface SetEncrpytedPassword {
-  type: "SetEncrpytedPassword";
-  encryptedPassword: string;
-}
-
 export interface Get {
-  type: "GetEncryptedPassword" | "GetEncrpytedLoginDetails";
+  type: "GetEncrpytedLoginDetails";
 }
 
-export interface ReturnEncryptedPassword {
-  type: "ReturnEncryptedPassword";
-  encryptedPassword: string;
-}
 export interface ReturnEncryptedLoginDetails {
   type: "ReturnEncryptedLoginDetails";
   encryptedLoginDetails: encryptedLoginDetails;
-}
-
-export interface EncryptedPasswordObject {
-  encryptedPassword: string;
 }
 
 export interface EncryptedLoginDetailsObject {
@@ -58,8 +45,6 @@ export interface Toast {
 
 export type MessageTypes =
   | SetPrevPage
-  | SetEncrpytedPassword
   | Get
-  | ReturnEncryptedPassword
   | SetEncrpytedLoginDetails
   | ReturnEncryptedLoginDetails;

@@ -1,20 +1,19 @@
-import { Get, MessageTypes, SetPrevPage } from "./types";
+import { Get, loginDetails, MessageTypes } from "./types";
 import {
   clickLoginByRaven,
-  RavenAuthLogin,
-  decryptEncryptedPassword,
+  decryptEncryptedLoginDetails,
   detectPage,
+  RavenAuthLogin,
 } from "./utils/index";
 
 setTimeout(() => {
   const page = detectPage(window.location.toString());
-
   switch (page) {
     case "moodle":
       clickLoginByRaven();
       break;
     case "raven":
-      chrome.runtime.sendMessage({ type: "GetEncryptedPassword" } as Get);
+      chrome.runtime.sendMessage({ type: "GetEncrpytedLoginDetails" } as Get);
       break;
     default:
       break;
@@ -22,11 +21,13 @@ setTimeout(() => {
   chrome.runtime.onMessage.addListener((message: MessageTypes) => {
     console.log(message);
     switch (message.type) {
-      case "ReturnEncryptedPassword":
-        console.log(decryptEncryptedPassword(message.encryptedPassword));
-        const password = decryptEncryptedPassword(message.encryptedPassword);
-        if (page === "raven") RavenAuthLogin(password);
+      case "ReturnEncryptedLoginDetails":
+        const loginDetails: loginDetails = decryptEncryptedLoginDetails(
+          message.encryptedLoginDetails
+        );
+        if (page === "raven") RavenAuthLogin(loginDetails);
 
+        break;
       default:
         break;
     }

@@ -2,7 +2,6 @@ import {
   encryptedLoginDetails,
   loginDetails,
   SetEncrpytedLoginDetails,
-  SetEncrpytedPassword,
 } from "../types";
 import { cipher, decipher } from "./crypto";
 
@@ -83,18 +82,6 @@ export const sendEncryptedLoginDetails = ({
 
   chrome.runtime.sendMessage(SetEncrpytedLoginDetailsObject);
 };
-
-export const sendEncryptedPassword = (password: string) => {
-  const SetEncrpytedPasswordObject: SetEncrpytedPassword = {
-    type: "SetEncrpytedPassword",
-    encryptedPassword: Cipher(password) as string,
-  };
-
-  chrome.runtime.sendMessage(SetEncrpytedPasswordObject);
-};
-
-export const decryptEncryptedPassword = (encryptedPassword: string) =>
-  Decipher(encryptedPassword) as string;
 
 export const decryptEncryptedLoginDetails = ({
   username,

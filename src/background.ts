@@ -1,10 +1,8 @@
 import {
   encryptedLoginDetails,
   EncryptedLoginDetailsObject,
-  EncryptedPasswordObject,
   MessageTypes,
   ReturnEncryptedLoginDetails,
-  ReturnEncryptedPassword,
 } from "./types";
 import { sendMessageFromBackground } from "./utils";
 
@@ -17,11 +15,6 @@ chrome.runtime.onMessage.addListener(
     switch (message.type) {
       case "SetPrevPage":
         chrome.storage.local.set({ prevURL: message.url });
-        break;
-      case "SetEncrpytedPassword":
-        chrome.storage.local.set({
-          encryptedPassword: message.encryptedPassword,
-        } as EncryptedPasswordObject);
         break;
 
       case "SetEncrpytedLoginDetails":
@@ -38,16 +31,6 @@ chrome.runtime.onMessage.addListener(
             encryptedLoginDetails: (
               res as { encryptedLoginDetails: encryptedLoginDetails }
             ).encryptedLoginDetails,
-          };
-          sendMessageFromBackground(message);
-        });
-        break;
-      case "GetEncryptedPassword":
-        chrome.storage.local.get(["encryptedPassword"], (res) => {
-          const message: ReturnEncryptedPassword = {
-            type: "ReturnEncryptedPassword",
-            encryptedPassword: (res as EncryptedPasswordObject)
-              .encryptedPassword,
           };
           sendMessageFromBackground(message);
         });
