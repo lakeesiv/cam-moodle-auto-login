@@ -1,4 +1,5 @@
 import {
+  EncryptedLoginDetailsObject,
   EncryptedPasswordObject,
   MessageTypes,
   ReturnEncryptedPassword,
@@ -19,6 +20,12 @@ chrome.runtime.onMessage.addListener(
         chrome.storage.local.set({
           encryptedPassword: message.encryptedPassword,
         } as EncryptedPasswordObject);
+        break;
+
+      case "SetEncrpytedLoginDetails":
+        chrome.storage.local.set({
+          encryptedLoginDetails: message.encryptedLoginDetails,
+        } as EncryptedLoginDetailsObject);
         break;
       case "GetEncryptedPassword":
         chrome.storage.local.get(["encryptedPassword"], (res) => {
