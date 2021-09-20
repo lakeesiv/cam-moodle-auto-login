@@ -1,8 +1,8 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-import LoginDetails from "./components/LoginDetailsDrawer";
-import RemoveDataButton from "./components/RemoveDataButton";
+import NotPresentLayout from "./components/NotPresentLayout";
+import PresentLayout from "./components/PresentLayout";
 import { Get } from "./types";
 
 const App = () => {
@@ -25,18 +25,16 @@ const App = () => {
     <div className="App">
       <Box w="xl" h="xl" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
-          <LoginDetails
-            UpdateOrSet={loginDetailsPresent ? "Update" : "Set"}
-            buttonCounter={buttonCounter}
-            setButtonCounter={setButtonCounter}
-          />
           {loginDetailsPresent ? (
-            <RemoveDataButton
+            <PresentLayout
               buttonCounter={buttonCounter}
               setButtonCounter={setButtonCounter}
             />
           ) : (
-            <p>meh</p>
+            <NotPresentLayout
+              buttonCounter={buttonCounter}
+              setButtonCounter={setButtonCounter}
+            />
           )}
 
           <Footer />
