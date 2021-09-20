@@ -30,7 +30,7 @@ export interface SetEncrpytedPassword {
 }
 
 export interface Get {
-  type: "GetEncryptedPassword";
+  type: "GetEncryptedPassword" | "GetEncrpytedLoginDetails";
 }
 
 export interface ReturnEncryptedPassword {
