@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Divider, Flex, Heading } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import NotPresentLayout from "./components/NotPresentLayout";
@@ -23,8 +23,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <Box w="xl" h="lg" bgColor="gray.900" p={4}>
+      <Box w="xl" h="md" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
+          <Heading>Cam Moodle Auto Login</Heading>
+          <Divider />
           {loginDetailsPresent ? (
             <PresentLayout
               buttonCounter={buttonCounter}
