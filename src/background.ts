@@ -37,7 +37,8 @@ chrome.runtime.onMessage.addListener(
         break;
       case "GetLoginDetailsPresent":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
-          const present: boolean = res ? true : false;
+          const present: boolean = res.encryptedLoginDetails ? true : false;
+          console.log("GetLoginDetailsPresent: " + present);
           sendResponse(present);
         });
         break;
