@@ -9,6 +9,21 @@ export interface SetPrevPage {
   url: string;
 }
 
+export interface loginDetails {
+  username: string;
+  password: string;
+}
+
+export interface encryptedLoginDetails {
+  username: string;
+  encryptedPassword: string;
+}
+
+export interface SetEncrpytedLoginDetails {
+  type: "SetEncrpytedLoginDetails";
+  encryptedLoginDetails: encryptedLoginDetails;
+}
+
 export interface SetEncrpytedPassword {
   type: "SetEncrpytedPassword";
   encryptedPassword: string;
