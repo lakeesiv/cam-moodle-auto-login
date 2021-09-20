@@ -1,7 +1,7 @@
 import { Get, MessageTypes, SetPrevPage } from "./types";
 import {
   clickLoginByRaven,
-  clickRavenAuthLogin,
+  RavenAuthLogin,
   decryptEncryptedPassword,
   detectPage,
 } from "./utils/index";
@@ -25,7 +25,7 @@ setTimeout(() => {
       case "ReturnEncryptedPassword":
         console.log(decryptEncryptedPassword(message.encryptedPassword));
         const password = decryptEncryptedPassword(message.encryptedPassword);
-        if (page === "raven") clickRavenAuthLogin(password);
+        if (page === "raven") RavenAuthLogin(password);
 
       default:
         break;

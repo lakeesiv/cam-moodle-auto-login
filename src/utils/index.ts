@@ -21,7 +21,7 @@ export const clickLoginByRaven = () => {
   }
 };
 
-export const clickRavenAuthLogin = (password: string) => {
+export const RavenAuthLogin = (password: string) => {
   try {
     const errorMessageElement = document.getElementsByClassName("error")[0] as
       | HTMLElement
