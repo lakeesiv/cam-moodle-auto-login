@@ -25,7 +25,7 @@ export interface SetEncrpytedLoginDetails {
 }
 
 export interface Get {
-  type: "GetEncrpytedLoginDetails";
+  type: "GetEncrpytedLoginDetails" | "GetLoginDetailsPresent";
 }
 
 export interface ReturnEncryptedLoginDetails {
