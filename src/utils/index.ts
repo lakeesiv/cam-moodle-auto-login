@@ -21,14 +21,14 @@ export const clickLoginByRaven = () => {
   }
 };
 
-export const RavenAuthLogin = (password: string) => {
+export const RavenAuthLogin = (loginDetails: loginDetails) => {
   try {
     const errorMessageElement = document.getElementsByClassName("error")[0] as
       | HTMLElement
       | undefined;
 
     if (!errorMessageElement) {
-      injectPassword(password);
+      injectLoginDetails(loginDetails);
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
         "campl-btn"
       )[0] as HTMLElement;
