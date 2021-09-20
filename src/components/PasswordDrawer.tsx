@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/modal";
 import { Button, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { ToastType } from "../types";
+import { Toast } from "../types";
 import { sendEncryptedPassword } from "../utils";
 
-const handleSubmit = (password: string, toast: ToastType) => {
+const handleSubmit = (password: string, toast: Toast) => {
   if (password) {
     sendEncryptedPassword(password);
     toast({

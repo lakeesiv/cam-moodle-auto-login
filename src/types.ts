@@ -27,7 +27,7 @@ export interface EncryptedPasswordObject {
   encryptedPassword: string;
 }
 
-export interface ToastType {
+export interface Toast {
   (options?: UseToastOptions | undefined): string | number | undefined;
   close: (id: ToastId) => void;
   closeAll: (options?: CloseAllToastsOptions | undefined) => void;
