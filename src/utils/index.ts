@@ -52,6 +52,14 @@ export const injectPassword = (password: string) => {
   }
 };
 
+export const injectUsername = (username: string) => {
+  try {
+    document.getElementById("userid")?.setAttribute("value", username);
+  } catch (error) {
+    console.log("error in injecting username", error);
+  }
+};
+
 export const sendEncryptedPassword = (password: string) => {
   const SetEncrpytedPasswordObject: SetEncrpytedPassword = {
     type: "SetEncrpytedPassword",
