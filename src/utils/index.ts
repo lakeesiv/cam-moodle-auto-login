@@ -1,4 +1,9 @@
-import { SetEncrpytedPassword } from "../types";
+import {
+  encryptedLoginDetails,
+  loginDetails,
+  SetEncrpytedLoginDetails,
+  SetEncrpytedPassword,
+} from "../types";
 import { cipher, decipher } from "./crypto";
 
 const secret = "SECRET";
@@ -58,6 +63,25 @@ export const injectUsername = (username: string) => {
   } catch (error) {
     console.log("error in injecting username", error);
   }
+};
+
+export const injectLoginDetails = ({ username, password }: loginDetails) => {
+  injectUsername(username);
+  injectPassword(password);
+};
+
+export const sendEncryptedLoginDetails = ({
+  username,
+  password,
+}: loginDetails) => {
+  const encryptedPassword = Cipher(password) as string;
+
+  const SetEncrpytedLoginDetailsObject: SetEncrpytedLoginDetails = {
+    type: "SetEncrpytedLoginDetails",
+    encryptedLoginDetails: { username, encryptedPassword },
+  };
+
+  chrome.runtime.sendMessage(SetEncrpytedLoginDetailsObject);
 };
 
 export const sendEncryptedPassword = (password: string) => {
