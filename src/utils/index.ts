@@ -96,6 +96,14 @@ export const sendEncryptedPassword = (password: string) => {
 export const decryptEncryptedPassword = (encryptedPassword: string) =>
   Decipher(encryptedPassword) as string;
 
+export const decryptEncryptedLoginDetails = ({
+  username,
+  encryptedPassword,
+}: encryptedLoginDetails): loginDetails => {
+  const password = Decipher(encryptedPassword);
+  return { username, password };
+};
+
 export const sendMessageFromBackground = (message: any) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id as number, message);
