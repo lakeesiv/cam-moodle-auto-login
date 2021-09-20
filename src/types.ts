@@ -37,6 +37,10 @@ export interface ReturnEncryptedPassword {
   type: "ReturnEncryptedPassword";
   encryptedPassword: string;
 }
+export interface ReturnEncryptedLoginDetails {
+  type: "ReturnEncryptedLoginDetails";
+  encryptedLoginDetails: encryptedLoginDetails;
+}
 
 export interface EncryptedPasswordObject {
   encryptedPassword: string;
@@ -57,4 +61,5 @@ export type MessageTypes =
   | SetEncrpytedPassword
   | Get
   | ReturnEncryptedPassword
-  | SetEncrpytedLoginDetails;
+  | SetEncrpytedLoginDetails
+  | ReturnEncryptedLoginDetails;
