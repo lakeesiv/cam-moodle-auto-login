@@ -27,6 +27,12 @@ chrome.runtime.onMessage.addListener(
           encryptedLoginDetails: message.encryptedLoginDetails,
         } as EncryptedLoginDetailsObject);
         break;
+
+      case "GetEncrpytedLoginDetails":
+        chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
+          sendResponse(res);
+        });
+        break;
       case "GetEncryptedPassword":
         chrome.storage.local.get(["encryptedPassword"], (res) => {
           const message: ReturnEncryptedPassword = {
