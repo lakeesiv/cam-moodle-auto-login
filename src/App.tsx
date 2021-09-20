@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Box w="xl" h="xl" bgColor="gray.900" p={4}>
+      <Box w="xl" h="lg" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
           {loginDetailsPresent ? (
             <PresentLayout
