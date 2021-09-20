@@ -29,11 +29,15 @@ const App = () => {
             buttonCounter={buttonCounter}
             setButtonCounter={setButtonCounter}
           />
-          {loginDetailsPresent ? <p>Meh</p> : <p>Rej</p>}
-          <RemoveDataButton
-            buttonCounter={buttonCounter}
-            setButtonCounter={setButtonCounter}
-          />
+          {loginDetailsPresent ? (
+            <RemoveDataButton
+              buttonCounter={buttonCounter}
+              setButtonCounter={setButtonCounter}
+            />
+          ) : (
+            <p>meh</p>
+          )}
+
           <Footer />
         </Flex>
       </Box>
