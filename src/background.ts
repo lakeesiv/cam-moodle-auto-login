@@ -1,7 +1,9 @@
 import {
+  encryptedLoginDetails,
   EncryptedLoginDetailsObject,
   EncryptedPasswordObject,
   MessageTypes,
+  ReturnEncryptedLoginDetails,
   ReturnEncryptedPassword,
 } from "./types";
 import { sendMessageFromBackground } from "./utils";
@@ -30,7 +32,14 @@ chrome.runtime.onMessage.addListener(
 
       case "GetEncrpytedLoginDetails":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
-          sendResponse(res);
+          // sendResponse(res);
+          const message: ReturnEncryptedLoginDetails = {
+            type: "ReturnEncryptedLoginDetails",
+            encryptedLoginDetails: (
+              res as { encryptedLoginDetails: encryptedLoginDetails }
+            ).encryptedLoginDetails,
+          };
+          sendMessageFromBackground(message);
         });
         break;
       case "GetEncryptedPassword":
