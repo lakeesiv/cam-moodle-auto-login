@@ -39,7 +39,15 @@ const handleSubmit = (username: string, password: string, toast: Toast) => {
   }
 };
 
-const PasswordDrawer: React.FC = () => {
+interface LoginDetailsDrawerProps {
+  buttonCounter: number;
+  setButtonCounter: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const LoginDetailsDrawer: React.FC<LoginDetailsDrawerProps> = ({
+  buttonCounter,
+  setButtonCounter,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
@@ -82,7 +90,10 @@ const PasswordDrawer: React.FC = () => {
           <DrawerFooter borderTopWidth="1px">
             <Button
               mr={3}
-              onClick={() => handleSubmit(username, password, toast)}
+              onClick={() => {
+                handleSubmit(username, password, toast);
+                setButtonCounter(buttonCounter + 1);
+              }}
             >
               Set Login Details
             </Button>
@@ -93,4 +104,4 @@ const PasswordDrawer: React.FC = () => {
   );
 };
 
-export default PasswordDrawer;
+export default LoginDetailsDrawer;
