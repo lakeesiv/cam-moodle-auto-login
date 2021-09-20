@@ -1,18 +1,29 @@
 import { Button, ButtonProps } from "@chakra-ui/button";
 import React from "react";
-import { RemoveData } from "../types";
+import { RemoveData, Toast } from "../types";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useToast } from "@chakra-ui/toast";
+
+const handleClick = (toast: Toast) => {
+  chrome.runtime.sendMessage({ type: "RemoveData" } as RemoveData);
+  toast({
+    title: "Sucess",
+    description: "All stored details have been deleted",
+    status: "success",
+    duration: 3000,
+    position: "top-right",
+    isClosable: true,
+  });
+};
 
 const RemoveDataButton: React.FC<ButtonProps> = ({ ...rest }) => {
-  const handleClick = () => {
-    chrome.runtime.sendMessage({ type: "RemoveData" } as RemoveData);
-  };
+  const toast = useToast();
   return (
     <Button
       {...rest}
       bgColor="red.700"
       leftIcon={<AiOutlineDelete />}
-      onClick={() => handleClick()}
+      onClick={() => handleClick(toast)}
     >
       Remove Stored Data
     </Button>
