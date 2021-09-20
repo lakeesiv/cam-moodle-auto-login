@@ -42,6 +42,10 @@ export interface EncryptedPasswordObject {
   encryptedPassword: string;
 }
 
+export interface EncryptedLoginDetailsObject {
+  encryptedLoginDetails: encryptedLoginDetails;
+}
+
 export interface Toast {
   (options?: UseToastOptions | undefined): string | number | undefined;
   close: (id: ToastId) => void;
@@ -52,4 +56,5 @@ export type MessageTypes =
   | SetPrevPage
   | SetEncrpytedPassword
   | Get
-  | ReturnEncryptedPassword;
+  | ReturnEncryptedPassword
+  | SetEncrpytedLoginDetails;
