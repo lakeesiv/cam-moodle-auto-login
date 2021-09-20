@@ -23,9 +23,5 @@
       "js": ["content.js"]
     }
   ],
-  "permissions": [
-    "storage",
-    "https://raven.cam.ac.uk/auth/*",
-    "https://www.vle.cam.ac.uk/*"
-  ]
+  "permissions": ["storage"]
 }
