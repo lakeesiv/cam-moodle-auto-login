@@ -1,4 +1,4 @@
-import { VStack, Text, Code, Box } from "@chakra-ui/react";
+import { VStack, Text, Code, Box, Link } from "@chakra-ui/react";
 import React from "react";
 import LoginDetailsDrawer from "./LoginDetailsDrawer";
 
@@ -29,6 +29,18 @@ const NotPresentLayout: React.FC<NotPresentLayoutProps> = ({
           setButtonCounter={setButtonCounter}
         />
       </Box>
+      <Text fontSize={14}>
+        If you want to learn more about how this extension works and how it uses
+        your data please have a read of the, {""}
+        <Code>README</Code> on Github (
+        <a
+          href="https://github.com/LakeeSiv/cam-moodle-auto-login#readme"
+          target="_blank"
+        >
+          <Link>link</Link>
+        </a>
+        ).
+      </Text>
     </VStack>
   );
 };
