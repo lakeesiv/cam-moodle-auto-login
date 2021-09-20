@@ -16,14 +16,26 @@ const handleClick = (toast: Toast) => {
   });
 };
 
-const RemoveDataButton: React.FC<ButtonProps> = ({ ...rest }) => {
+interface RemoveDataButtonDrawerProps extends ButtonProps {
+  buttonCounter: number;
+  setButtonCounter: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const RemoveDataButton: React.FC<RemoveDataButtonDrawerProps> = ({
+  buttonCounter,
+  setButtonCounter,
+  ...rest
+}) => {
   const toast = useToast();
   return (
     <Button
       {...rest}
       bgColor="red.700"
       leftIcon={<AiOutlineDelete />}
-      onClick={() => handleClick(toast)}
+      onClick={() => {
+        handleClick(toast);
+        setButtonCounter(buttonCounter + 1);
+      }}
     >
       Remove Stored Data
     </Button>

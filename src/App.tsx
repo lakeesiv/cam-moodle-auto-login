@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import LoginDetails from "./components/LoginDetailsDrawer";
+import RemoveDataButton from "./components/RemoveDataButton";
 import { Get } from "./types";
 
 const App = () => {
@@ -29,6 +30,10 @@ const App = () => {
             setButtonCounter={setButtonCounter}
           />
           {loginDetailsPresent ? <p>Meh</p> : <p>Rej</p>}
+          <RemoveDataButton
+            buttonCounter={buttonCounter}
+            setButtonCounter={setButtonCounter}
+          />
           <Footer />
         </Flex>
       </Box>
