@@ -42,11 +42,13 @@ const handleSubmit = (username: string, password: string, toast: Toast) => {
 interface LoginDetailsDrawerProps {
   buttonCounter: number;
   setButtonCounter: React.Dispatch<React.SetStateAction<number>>;
+  UpdateOrSet: "Update" | "Set";
 }
 
 const LoginDetailsDrawer: React.FC<LoginDetailsDrawerProps> = ({
   buttonCounter,
   setButtonCounter,
+  UpdateOrSet = "Set",
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [password, setPassword] = useState<string>("");
@@ -56,14 +58,14 @@ const LoginDetailsDrawer: React.FC<LoginDetailsDrawerProps> = ({
   return (
     <>
       <Button colorScheme="teal" onClick={onOpen}>
-        Set/Updated Login Details
+        {UpdateOrSet} Login Details
       </Button>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">
-            Set.Update Login Details
+            {UpdateOrSet} Login Details
           </DrawerHeader>
 
           <DrawerBody>
@@ -95,7 +97,7 @@ const LoginDetailsDrawer: React.FC<LoginDetailsDrawerProps> = ({
                 setButtonCounter(buttonCounter + 1);
               }}
             >
-              Set Login Details
+              {UpdateOrSet} Login Details
             </Button>
           </DrawerFooter>
         </DrawerContent>

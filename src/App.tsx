@@ -26,6 +26,7 @@ const App = () => {
       <Box w="xl" h="xl" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
           <LoginDetails
+            UpdateOrSet={loginDetailsPresent ? "Update" : "Set"}
             buttonCounter={buttonCounter}
             setButtonCounter={setButtonCounter}
           />
