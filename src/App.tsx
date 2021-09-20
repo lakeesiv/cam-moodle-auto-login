@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-import PasswordDrawer from "./components/PasswordDrawer";
+import LoginDetails from "./components/LoginDetailsDrawer";
 import { Get } from "./types";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
     <div className="App">
       <Box w="xl" h="xl" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
-          <PasswordDrawer
+          <LoginDetails
             buttonCounter={buttonCounter}
             setButtonCounter={setButtonCounter}
           />
