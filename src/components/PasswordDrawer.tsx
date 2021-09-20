@@ -10,14 +10,14 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from "@chakra-ui/modal";
-import { Button, Textarea, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Toast } from "../types";
-import { sendEncryptedPassword } from "../utils";
+import { sendEncryptedLoginDetails } from "../utils";
 
-const handleSubmit = (password: string, toast: Toast) => {
-  if (password) {
-    sendEncryptedPassword(password);
+const handleSubmit = (username: string, password: string, toast: Toast) => {
+  if (password && username) {
+    sendEncryptedLoginDetails({ username, password });
     toast({
       title: "Sucess",
       description: "Password has been encrypted and stored in local storage",
@@ -29,7 +29,7 @@ const handleSubmit = (password: string, toast: Toast) => {
   } else {
     toast({
       title: "Fail",
-      description: "Make sure password field is not empty",
+      description: "Make sure fields are not empty",
       status: "error",
       duration: 3000,
       position: "top-right",
@@ -41,6 +41,7 @@ const handleSubmit = (password: string, toast: Toast) => {
 const PasswordDrawer: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const toast = useToast();
 
   return (
@@ -57,8 +58,12 @@ const PasswordDrawer: React.FC = () => {
           <DrawerBody>
             <Stack spacing="24px">
               <Box>
-                <FormLabel htmlFor="desc">Description</FormLabel>
-                <Textarea id="desc" />
+                <FormLabel htmlFor="password">CRSid</FormLabel>
+                <Input
+                  p={2}
+                  type="text"
+                  onChange={(e) => setUsername(e.target.value)}
+                ></Input>
               </Box>
               <Box>
                 <FormLabel htmlFor="password">Password</FormLabel>
@@ -72,8 +77,11 @@ const PasswordDrawer: React.FC = () => {
           </DrawerBody>
 
           <DrawerFooter borderTopWidth="1px">
-            <Button mr={3} onClick={() => handleSubmit(password, toast)}>
-              Set Password
+            <Button
+              mr={3}
+              onClick={() => handleSubmit(username, password, toast)}
+            >
+              Set Login Details
             </Button>
           </DrawerFooter>
         </DrawerContent>
