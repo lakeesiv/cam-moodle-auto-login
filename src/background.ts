@@ -35,6 +35,12 @@ chrome.runtime.onMessage.addListener(
           sendMessageFromBackground(message);
         });
         break;
+      case "GetLoginDetailsPresent":
+        chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
+          const present: boolean = res ? true : false;
+          sendResponse(present);
+        });
+        break;
       default:
         break;
     }
