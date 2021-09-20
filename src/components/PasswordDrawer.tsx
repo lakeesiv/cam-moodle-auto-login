@@ -20,7 +20,8 @@ const handleSubmit = (username: string, password: string, toast: Toast) => {
     sendEncryptedLoginDetails({ username, password });
     toast({
       title: "Sucess",
-      description: "Password has been encrypted and stored in local storage",
+      description:
+        "Login details have been encrypted and stored in local storage",
       status: "success",
       duration: 3000,
       position: "top-right",
@@ -47,13 +48,15 @@ const PasswordDrawer: React.FC = () => {
   return (
     <>
       <Button colorScheme="teal" onClick={onOpen}>
-        Updated Password
+        Set/Updated Login Details
       </Button>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">Update Password</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">
+            Set.Update Login Details
+          </DrawerHeader>
 
           <DrawerBody>
             <Stack spacing="24px">
