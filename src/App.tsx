@@ -26,7 +26,7 @@ const App = () => {
       <Box w="xl" h="sm" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
           <Heading>Cam Moodle Auto Login</Heading>
-          <Divider />
+          <Divider pt={2} />
           {loginDetailsPresent ? (
             <PresentLayout
               buttonCounter={buttonCounter}
