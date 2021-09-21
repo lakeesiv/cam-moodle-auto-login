@@ -3,6 +3,7 @@ import React from "react";
 import { RemoveData, Toast } from "../types";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useToast } from "@chakra-ui/toast";
+import { Tooltip } from "@chakra-ui/react";
 
 const handleClick = (toast: Toast) => {
   chrome.runtime.sendMessage({ type: "RemoveData" } as RemoveData);
@@ -28,17 +29,19 @@ const RemoveDataButton: React.FC<RemoveDataButtonDrawerProps> = ({
 }) => {
   const toast = useToast();
   return (
-    <Button
-      {...rest}
-      bgColor="red.700"
-      leftIcon={<AiOutlineDelete />}
-      onClick={() => {
-        handleClick(toast);
-        setButtonCounter(buttonCounter + 1);
-      }}
-    >
-      Remove Stored Data
-    </Button>
+    <Tooltip label="Removes all chrome.storage.local data" hasArrow>
+      <Button
+        {...rest}
+        bgColor="red.700"
+        leftIcon={<AiOutlineDelete />}
+        onClick={() => {
+          handleClick(toast);
+          setButtonCounter(buttonCounter + 1);
+        }}
+      >
+        Remove Stored Data
+      </Button>
+    </Tooltip>
   );
 };
 
