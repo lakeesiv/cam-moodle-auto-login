@@ -10,8 +10,6 @@
 
 Many Cambridge students find it annoying that Moodle session timeouts (logging you out) way too quickly. This simple extension aims to eradicate this daily annoyance by automatically logging you back into Moodle through Raven.
 
-This chrome extension helps you to save a few seconds.
-
 # Demo
 
 ![demo gid](img/demo.gif)
@@ -41,3 +39,17 @@ After you are all set up, the popup for the extension should look something like
 </p>
 
 Clicking the "Remove Stored Data" should allow you to remove all of the data store in `chrome.storage.local`
+
+# Your Data & Security
+
+This is quite an important topic to talk about. Firstly, all data that is stored is stored **locally** (`chrome.storage.local`) on your hard drive meaning, no websites or even other extensions could access this data. None of you data is ever sent to any other location, this can be confirmed by checking the Network Tool on the chrome dev tools, no API requests are made by this extension.
+
+Your data is encrypted (unlike other chrome extensions like [AutoFill](https://chrome.google.com/webstore/detail/autofill/nlmmgnhgdeffjkdckmikfpnddkbbfkkk?hl=en)) using this lightweight but meh [algorithm](https://stackoverflow.com/a/54026460/15032172) I found on stackoverflow. The reason why this was used was firstly, it very lightweight so reduces the bundle size, but more importantly, this worked nicely with webpack (whilst external crypto libraries seemed to make webpack cry).
+
+All of these steps will help limit the likelihood of your login details being exposed.
+
+## Note on the secret key
+
+Due to the fact that this extension makes no API calls (this was a big aim for me, as if it did make API calls, then it would be hard for people to trust that their data isn't send anywhere), the secret key is technically "hard coded", although, to find it out one must so some searching through the complied, minimized javascript.
+
+In case you would like to use your own secret key, then I would suggest that you build it from source.
