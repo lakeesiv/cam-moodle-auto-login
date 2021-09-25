@@ -6,7 +6,7 @@
     <li><a href="#Demo">Demo</a></li>
     <li><a href="#Set-Up">Set Up</a></li>
     <li><a href="#your-data--security">Your Data & Security</a></li>
-    <li><a href="building-from-source">Building from source
+    <li><a href="#building-from-source">Building from source
 </a></li>
     <li><a href="#the-avatar">The avatar</a></li>
     
