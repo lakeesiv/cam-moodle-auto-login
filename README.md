@@ -89,7 +89,7 @@ This should compile the code into a `dist` folder. You can now upload this folde
 
 # The avatar
 
-In case everyone cares, the avatar is `King Crismon` from JoJo Bizarre Adventure: Golden Wind. There is a reason why this avatar was used, other than having a JoJo reference in here
+In case anyone cares, the avatar is `King Crismon` from JoJo Bizarre Adventure: Golden Wind. There is a reason why this avatar was used, other than having a JoJo reference in here, was...
 
 <details >
 
