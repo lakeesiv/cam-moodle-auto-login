@@ -71,3 +71,18 @@ yarn build
 ```
 
 This should compile the code into a `dist` folder. You can now upload this folder in [chrome://extensions/](chrome://extensions/) (making sure to allow developer mode).
+
+# The avatar
+
+In case everyone cares, the avatar is `King Crismon` from JoJo Bizarre Adventure: Golden Wind. There is a reason why this avatar was used, other than having a JoJo reference in here
+
+<details >
+
+  <summary>Spoilers for JJBA: GW</summary>
+  <p>
+   The main ability of King Crismon is <b>Time Erasure</b>, and as you may realize, this extension basically erases the time that is normally used to re-login.
+
+Meh reference, I know. I was just bored.
+
+  </p>
+</details>
