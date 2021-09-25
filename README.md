@@ -1,3 +1,18 @@
+<details open="open">
+
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#Aim">Aim</a></li>
+    <li><a href="#Demo">Demo</a></li>
+    <li><a href="#Set-Up">Set Up</a></li>
+    <li><a href="#your-data--security">Your Data & Security</a></li>
+    <li><a href="building-from-source">Building from source
+</a></li>
+    <li><a href="#the-avatar">The avatar</a></li>
+    
+  </ol>
+</details>
+
 # Cam Moodle Auto Login
 
 <p align="center">
