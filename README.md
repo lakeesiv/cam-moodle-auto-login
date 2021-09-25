@@ -23,4 +23,21 @@ From this demo, you can see that it will automatically select "Login in By Raven
 Firstly install the extension. Then click the extension symbol.
 
 You should see something like this
-![enter_details](img/enter_details.PNG)
+
+<p align="center">
+  <img src="./img/enter_details.PNG" width="60%"/>
+</p>
+
+Click the "Set Login Details" button. This should open up a drawer where you can enter your login details and set them. Your login details will be encrypted and stored in the extensions local storage.
+
+After that you are ready to go, and it should work as expected.
+
+## Removing Data
+
+After you are all set up, the popup for the extension should look something like this
+
+<p align="center">
+  <img src="./img/remove_data.PNG" width="60%"/>
+</p>
+
+Clicking the "Remove Stored Data" should allow you to remove all of the data store in `chrome.storage.local`
