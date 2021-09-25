@@ -53,3 +53,21 @@ All of these steps will help limit the likelihood of your login details being ex
 Due to the fact that this extension makes no API calls (this was a big aim for me, as if it did make API calls, then it would be hard for people to trust that their data isn't send anywhere), the secret key is technically "hard coded", although, to find it out one must so some searching through the complied, minimized javascript.
 
 In case you would like to use your own secret key, then I would suggest that you build it from source.
+
+# Building from source
+
+> Note: yarn is used in the example commands
+
+Clone the repo, then install the packages by running
+
+```
+yarn
+```
+
+then build the extension by running
+
+```
+yarn build
+```
+
+This should compile the code into a `dist` folder. You can now upload this folder in [chrome://extensions/](chrome://extensions/) (making sure to allow developer mode).
