@@ -19,7 +19,7 @@ const handleSubmit = (username: string, password: string, toast: Toast) => {
   if (password && username) {
     sendEncryptedLoginDetails({ username, password });
     toast({
-      title: "Sucess",
+      title: "Success",
       description:
         "Login details have been encrypted and stored in local storage",
       status: "success",
