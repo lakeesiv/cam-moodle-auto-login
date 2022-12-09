@@ -59,9 +59,7 @@ Clicking the "Remove Stored Data" should allow you to remove all of the data sto
 
 This is quite an important topic to talk about. Firstly, all data that is stored is stored **locally** (`chrome.storage.local`) on your hard drive meaning, no websites or even other extensions could access this data. None of you data is ever sent to any other location, this can be confirmed by checking the Network Tool on the chrome dev tools, no API requests are made by this extension.
 
-Your data is encrypted (unlike other chrome extensions like [AutoFill](https://chrome.google.com/webstore/detail/autofill/nlmmgnhgdeffjkdckmikfpnddkbbfkkk?hl=en)) using this lightweight but meh [algorithm](https://stackoverflow.com/a/54026460/15032172) I found on stackoverflow. The reason why this was used was firstly, it very lightweight so reduces the bundle size, but more importantly, this worked nicely with webpack (whilst external crypto libraries seemed to make webpack cry).
-
-All of these steps will help limit the likelihood of your login details being exposed.
+Your data is simply encoded (unlike other chrome extensions like [AutoFill](https://chrome.google.com/webstore/detail/autofill/nlmmgnhgdeffjkdckmikfpnddkbbfkkk?hl=en)). This is not very secure and it your password can be somewhat simply recovered from this encoded version that is stored, so it is recommended that you firstly do not use the password anywhere else and also that you understand that you are exposing it at your own risk.
 
 ## Note on the secret key
 
@@ -101,3 +99,7 @@ Meh reference, I know. I was just bored.
 
   </p>
 </details>
+
+# Note
+
+I am not responsible for any consquences from using this extension.

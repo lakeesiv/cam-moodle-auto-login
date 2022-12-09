@@ -25,7 +25,7 @@ const PresentLayout: React.FC<PresentLayoutProps> = ({
           setButtonCounter={setButtonCounter}
         />
       </Flex>
-      <Box spacing="auto">
+      <Box>
         <Text fontSize={14}>
           If you want to learn more about how this extension works and how it
           uses your data please have a read of the, {""}

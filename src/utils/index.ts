@@ -42,8 +42,7 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
 };
 
 export const detectPage = (url: string): "raven" | "moodle" | null => {
-  return url.includes("https://raven.cam.ac.uk/auth/authenticate.html") &&
-    url.includes("vle")
+  return url.includes("https://raven.cam.ac.uk/auth/authenticate.html")
     ? "raven"
     : url === "https://www.vle.cam.ac.uk/login/index.php"
     ? "moodle"
