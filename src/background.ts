@@ -22,9 +22,18 @@ chrome.runtime.onMessage.addListener(
           encryptedLoginDetails: message.encryptedLoginDetails,
         } as EncryptedLoginDetailsObject);
         break;
+
       case "SetUsePasswordManagerAutofill":
-        chrome.storage.local.set({
-          usePasswordManagerAutofill: message.usePasswordManagerAutofill,
+        chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
+          // sendResponse(res);
+          const details = res as {
+            encryptedLoginDetails: encryptedLoginDetails;
+          };
+          details.encryptedLoginDetails.usePasswordManagerAutofill =
+            message.usePasswordManagerAutofill;
+          chrome.storage.local.set({
+            encryptedLoginDetails: details.encryptedLoginDetails,
+          } as EncryptedLoginDetailsObject);
         });
 
       case "GetEncrpytedLoginDetails":

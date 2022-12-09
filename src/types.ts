@@ -12,11 +12,13 @@ export interface SetPrevPage {
 export interface loginDetails {
   username: string;
   password: string;
+  usePasswordManagerAutofill?: boolean;
 }
 
 export interface encryptedLoginDetails {
   username: string;
   encryptedPassword: string;
+  usePasswordManagerAutofill?: boolean;
 }
 
 export interface SetEncrpytedLoginDetails {
@@ -41,6 +43,11 @@ export interface EncryptedLoginDetailsObject {
   encryptedLoginDetails: encryptedLoginDetails;
 }
 
+export interface SetUsePasswordManagerAutofill {
+  type: "SetUsePasswordManagerAutofill";
+  usePasswordManagerAutofill: boolean;
+}
+
 export interface Toast {
   (options?: UseToastOptions | undefined): string | number | undefined;
   close: (id: ToastId) => void;
@@ -52,4 +59,5 @@ export type MessageTypes =
   | Get
   | SetEncrpytedLoginDetails
   | ReturnEncryptedLoginDetails
-  | RemoveData;
+  | RemoveData
+  | SetUsePasswordManagerAutofill;

@@ -28,7 +28,9 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
       | undefined;
 
     if (!errorMessageElement) {
-      injectLoginDetails(loginDetails);
+      if (!loginDetails.usePasswordManagerAutofill) {
+        injectLoginDetails(loginDetails);
+      }
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
         "campl-btn"
       )[0] as HTMLElement;

@@ -3,7 +3,7 @@ import {
   clickLoginByRaven,
   decryptEncryptedLoginDetails,
   detectPage,
-  RavenAuthLogin,
+  RavenAuthLogin as Login,
 } from "./utils/index";
 
 setTimeout(() => {
@@ -22,10 +22,13 @@ setTimeout(() => {
     console.log(message);
     switch (message.type) {
       case "ReturnEncryptedLoginDetails":
-        const loginDetails: loginDetails = decryptEncryptedLoginDetails(
-          message.encryptedLoginDetails
-        );
-        if (page === "raven") RavenAuthLogin(loginDetails);
+        const loginDetails: loginDetails = {
+          ...decryptEncryptedLoginDetails(message.encryptedLoginDetails),
+
+          usePasswordManagerAutofill:
+            message.encryptedLoginDetails.usePasswordManagerAutofill,
+        };
+        if (page === "raven") Login(loginDetails);
 
         break;
       default:
