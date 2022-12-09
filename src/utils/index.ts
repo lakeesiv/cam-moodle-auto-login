@@ -28,13 +28,33 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
       | undefined;
 
     if (!errorMessageElement) {
-      if (!loginDetails?.usePasswordManagerAutofill) {
-        injectLoginDetails(loginDetails);
-      }
+      console.log(
+        "Use password manager autofill: ",
+        loginDetails.usePasswordManagerAutofill
+      );
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
         "campl-btn"
       )[0] as HTMLElement;
-      ravenLogInButton.click();
+
+      if (!loginDetails?.usePasswordManagerAutofill) {
+        injectLoginDetails(loginDetails);
+        // ravenLogInButton.click();
+      } else {
+        let found = false;
+        (function myLoop(i) {
+          setTimeout(function () {
+            const pwd = (document.getElementById("pwd") as HTMLInputElement)
+              .value;
+
+            if (pwd) {
+              if (found) ravenLogInButton.click();
+              console.log("Using password manager autofill");
+              found = true;
+            }
+            if (--i) myLoop(i); //  decrement i and call myLoop again if i > 0
+          }, 400);
+        })(10);
+      }
     } else {
       console.log(errorMessageElement.innerText);
     }
@@ -89,9 +109,13 @@ export const sendEncryptedLoginDetails = ({
 export const decryptEncryptedLoginDetails = ({
   username,
   encryptedPassword,
+  usePasswordManagerAutofill,
 }: encryptedLoginDetails): loginDetails => {
+  if (!encryptedPassword)
+    return { username, password: "", usePasswordManagerAutofill };
+
   const password = Decipher(encryptedPassword);
-  return { username, password };
+  return { username, password, usePasswordManagerAutofill };
 };
 
 export const sendMessageFromBackground = (message: any) => {

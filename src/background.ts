@@ -26,11 +26,17 @@ chrome.runtime.onMessage.addListener(
       case "SetUsePasswordManagerAutofill":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
           // sendResponse(res);
-          const details = res as {
-            encryptedLoginDetails: encryptedLoginDetails;
-          };
+          const details = {
+            encryptedLoginDetails: { ...res },
+          } as { encryptedLoginDetails: encryptedLoginDetails };
+
+          console.log(details);
+
           details.encryptedLoginDetails.usePasswordManagerAutofill =
             message.usePasswordManagerAutofill;
+
+          console.log(details);
+
           chrome.storage.local.set({
             encryptedLoginDetails: details.encryptedLoginDetails,
           } as EncryptedLoginDetailsObject);
@@ -39,18 +45,26 @@ chrome.runtime.onMessage.addListener(
       case "GetEncrpytedLoginDetails":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
           // sendResponse(res);
+          const response = res as {
+            encryptedLoginDetails: encryptedLoginDetails;
+          };
+
+          console.log("GetEncrpytedLoginDetails:" + JSON.stringify(response));
+
           const message: ReturnEncryptedLoginDetails = {
             type: "ReturnEncryptedLoginDetails",
-            encryptedLoginDetails: (
-              res as { encryptedLoginDetails: encryptedLoginDetails }
-            ).encryptedLoginDetails,
+            encryptedLoginDetails: response.encryptedLoginDetails,
           };
           sendMessageFromBackground(message);
         });
         break;
       case "GetLoginDetailsPresent":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
-          const present: boolean = res.encryptedLoginDetails ? true : false;
+          const present: boolean = (
+            res.encryptedLoginDetails as encryptedLoginDetails
+          ).encryptedPassword
+            ? true
+            : false;
           console.log("GetLoginDetailsPresent: " + present);
           sendResponse(present);
         });

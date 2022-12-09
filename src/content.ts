@@ -19,15 +19,18 @@ setTimeout(() => {
       break;
   }
   chrome.runtime.onMessage.addListener((message: MessageTypes) => {
-    console.log(message);
     switch (message.type) {
       case "ReturnEncryptedLoginDetails":
+        console.log(message.encryptedLoginDetails);
         const loginDetails: loginDetails = {
           ...decryptEncryptedLoginDetails(message.encryptedLoginDetails),
 
           usePasswordManagerAutofill:
             message.encryptedLoginDetails.usePasswordManagerAutofill,
         };
+
+        // console.log(JSON.stringify(loginDetails));
+
         if (page === "raven") Login(loginDetails);
 
         break;
