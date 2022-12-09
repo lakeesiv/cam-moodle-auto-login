@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import NotPresentLayout from "./components/NotPresentLayout";
 import PresentLayout from "./components/PresentLayout";
+import UsePasswordManager from "./components/UsePasswordManager";
 import { Get } from "./types";
 
 const App = () => {
@@ -38,7 +39,10 @@ const App = () => {
               setButtonCounter={setButtonCounter}
             />
           )}
-
+          <UsePasswordManager
+            buttonCounter={buttonCounter}
+            setButtonCounter={setButtonCounter}
+          ></UsePasswordManager>
           <Footer />
         </Flex>
       </Box>

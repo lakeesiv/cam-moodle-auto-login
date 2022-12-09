@@ -28,7 +28,7 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
       | undefined;
 
     if (!errorMessageElement) {
-      if (!loginDetails.usePasswordManagerAutofill) {
+      if (!loginDetails?.usePasswordManagerAutofill) {
         injectLoginDetails(loginDetails);
       }
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
