@@ -1,4 +1,4 @@
-import { Divider, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Divider, Heading, Text, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Get } from "../types";
 import SetUsePasswordManager from "./SetUsePasswordManager";
@@ -40,11 +40,13 @@ const UsePasswordManager: React.FC<Props> = ({
             we will click the login button for you. If you want to use this
             feature, press the button below.
           </Text>
-          <SetUsePasswordManager
-            buttonCounter={buttonCounter}
-            setButtonCounter={setButtonCounter}
-            setToTrue={true}
-          />
+          <Box pt={2}>
+            <SetUsePasswordManager
+              buttonCounter={buttonCounter}
+              setButtonCounter={setButtonCounter}
+              setToTrue={true}
+            />
+          </Box>
         </VStack>
       ) : (
         <VStack w="full" spacing="2">
