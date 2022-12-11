@@ -40,13 +40,11 @@ const UsePasswordManager: React.FC<Props> = ({
             we will click the login button for you. If you want to use this
             feature, press the button below.
           </Text>
-          <Box pt={2}>
-            <SetUsePasswordManager
-              buttonCounter={buttonCounter}
-              setButtonCounter={setButtonCounter}
-              setToTrue={true}
-            />
-          </Box>
+          <SetUsePasswordManager
+            buttonCounter={buttonCounter}
+            setButtonCounter={setButtonCounter}
+            setToTrue={true}
+          />
         </VStack>
       ) : (
         <VStack w="full" spacing="2">
