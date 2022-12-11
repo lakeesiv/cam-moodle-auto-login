@@ -3,7 +3,7 @@ import {
   clickLoginByRaven,
   decryptEncryptedLoginDetails,
   detectPage,
-  RavenAuthLogin as Login,
+  ravenLogin,
 } from "./utils/index";
 
 setTimeout(() => {
@@ -21,17 +21,13 @@ setTimeout(() => {
   chrome.runtime.onMessage.addListener((message: MessageTypes) => {
     switch (message.type) {
       case "ReturnEncryptedLoginDetails":
-        console.log(message.encryptedLoginDetails);
         const loginDetails: loginDetails = {
           ...decryptEncryptedLoginDetails(message.encryptedLoginDetails),
-
           usePasswordManagerAutofill:
             message.encryptedLoginDetails.usePasswordManagerAutofill,
         };
 
-        // console.log(JSON.stringify(loginDetails));
-
-        if (page === "raven") Login(loginDetails);
+        if (page === "raven") ravenLogin(loginDetails);
 
         break;
       default:

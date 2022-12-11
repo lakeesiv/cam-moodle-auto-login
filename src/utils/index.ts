@@ -10,6 +10,9 @@ const secret = secret_key;
 const Cipher = cipher(secret);
 const Decipher = decipher(secret);
 
+/**
+ * @description Selects login using Raven button on the moodle page
+ */
 export const clickLoginByRaven = () => {
   try {
     const loginByRavenButton: HTMLElement = document.getElementsByClassName(
@@ -21,30 +24,32 @@ export const clickLoginByRaven = () => {
   }
 };
 
-export const RavenAuthLogin = (loginDetails: loginDetails) => {
+export const ravenLogin = (loginDetails: loginDetails) => {
   try {
+    // check for error message, if present, do not proceed, prevent infinite loop
     const errorMessageElement = document.getElementsByClassName("error")[0] as
       | HTMLElement
       | undefined;
 
     if (!errorMessageElement) {
-      console.log(
-        "Use password manager autofill: ",
-        loginDetails.usePasswordManagerAutofill
-      );
+      if (loginDetails.usePasswordManagerAutofill) {
+        console.log("using password manager autofill");
+      }
 
-      const ravenLogInButton: HTMLElement = document.getElementsByClassName(
+      const ravenLogInButton = document.getElementsByClassName(
         "campl-btn"
-      )[0] as HTMLElement;
+      )[0] as HTMLButtonElement;
 
       if (!loginDetails?.usePasswordManagerAutofill) {
+        // if not using password manager autofill, then inject login details
         injectLoginDetails(loginDetails);
-
         ravenLogInButton.click();
       } else {
+        // if using password manager autofill, then wait for password manager to fill in the password (1s)
+
         setTimeout(() => {
           const pwd = (document.getElementById("pwd") as HTMLInputElement)
-            .value;
+            .value; // check if password is filled in
           if (pwd) {
             ravenLogInButton.click();
           }
@@ -58,6 +63,12 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
   }
 };
 
+/**
+ *
+ * @description Detects which page the user is on
+ * @param url url of the page
+ * @returns Either "raven" or "moodle" or null
+ */
 export const detectPage = (url: string): "raven" | "moodle" | null => {
   return url.includes("https://raven.cam.ac.uk/auth/authenticate.html")
     ? "raven"
@@ -66,6 +77,10 @@ export const detectPage = (url: string): "raven" | "moodle" | null => {
     : null;
 };
 
+/**
+ * @description Injects password into the password field of the login page
+ * @param password password
+ */
 export const injectPassword = (password: string) => {
   try {
     document.getElementById("pwd")?.setAttribute("value", password);
@@ -74,6 +89,10 @@ export const injectPassword = (password: string) => {
   }
 };
 
+/**
+ * @description Injects username into the username field of the login page
+ * @param username username
+ */
 export const injectUsername = (username: string) => {
   try {
     document.getElementById("userid")?.setAttribute("value", username);
@@ -82,11 +101,24 @@ export const injectUsername = (username: string) => {
   }
 };
 
+/**
+ *
+ * @description Injects username and password into the login page
+ * @param username username
+ * @param password password
+ */
 export const injectLoginDetails = ({ username, password }: loginDetails) => {
   injectUsername(username);
   injectPassword(password);
 };
 
+/**
+ *
+ * @description Takes login details, ciphers them and sends it to background script to be  stored
+ * @param username username
+ * @param password password
+ * @returns  void
+ */
 export const sendEncryptedLoginDetails = ({
   username,
   password,
@@ -101,6 +133,17 @@ export const sendEncryptedLoginDetails = ({
   chrome.runtime.sendMessage(SetEncrpytedLoginDetailsObject);
 };
 
+/**
+ *
+ * @param username username
+ * @param encryptedPassword ciphered password
+ * @param usePasswordManagerAutofill boolean to indicate whether to use password manager autofill
+ * @returns  decrypted login details `{
+  username: string;
+  password: string;
+  usePasswordManagerAutofill?: boolean;
+}`
+ */
 export const decryptEncryptedLoginDetails = ({
   username,
   encryptedPassword,
@@ -113,6 +156,10 @@ export const decryptEncryptedLoginDetails = ({
   return { username, password, usePasswordManagerAutofill };
 };
 
+/**
+ *
+ * @param message Sends message from background to content script
+ */
 export const sendMessageFromBackground = (message: any) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id as number, message);
