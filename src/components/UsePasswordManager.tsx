@@ -1,13 +1,4 @@
-import {
-  VStack,
-  Text,
-  Code,
-  Box,
-  Link,
-  Divider,
-  HStack,
-  Heading,
-} from "@chakra-ui/react";
+import { Divider, Heading, Text, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Get } from "../types";
 import SetUsePasswordManager from "./SetUsePasswordManager";
@@ -33,10 +24,13 @@ const UsePasswordManager: React.FC<Props> = ({
 
   return (
     <VStack pt={4} spacing={4} alignItems="flex-start">
-      <Heading>Want to use your own Password Manager?</Heading>
-      <Divider></Divider>
+      <Divider />
+      <Heading fontSize="16">
+        Alternatively, use your own Password Manager?
+      </Heading>
+      <Divider />
       {usePwdManager ? (
-        <VStack>
+        <VStack w="full" spacing="2">
           <Text fontSize={14}>
             Alternatively if you have a password manager that autofills (eg.
             Bitwarden), then you can use that to autofill the login details. And

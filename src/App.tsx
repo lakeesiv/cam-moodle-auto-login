@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Box w="xl" h="sm" bgColor="gray.900" p={4}>
+      <Box w="xl" h="lg" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
           <Heading>Cam Moodle Auto Login</Heading>
           <Divider pt={2} />
