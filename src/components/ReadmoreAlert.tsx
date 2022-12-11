@@ -4,7 +4,7 @@ import React from "react";
 const ReadmoreAlert = () => (
   <Box pt="4">
     <Divider py="2"></Divider>
-    <Text fontSize={14}>
+    <Text fontSize={14} pt={4}>
       If you want to learn more about how this extension works and how it uses
       your data please have a read of the, {""}
       <Code>README</Code> on Github (
