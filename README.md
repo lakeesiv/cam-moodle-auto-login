@@ -41,12 +41,19 @@ You should see something like this
   <img src="./img/enter_details.PNG" width="60%"/>
 </p>
 
+## Using Your Password Manager
+
+If you are using your own password manager, then you just need to click the button at the bottom to use it. You need to make sure that your password manager autofills (within 1s of page load). After that you do not need to follow the rest of the steps.
+
+## Not Using Your Password Manager
+
 Click the "Set Login Details" button. This should open up a drawer where you can enter your login details and set them. Your login details will be encrypted and stored in the extensions local storage.
 
 After that you are ready to go, and it should work as expected.
 
 ## Removing Data
 
+If you want to store the password on this extension then.
 After you are all set up, the popup for the extension should look something like this
 
 <p align="center">
@@ -59,7 +66,7 @@ Clicking the "Remove Stored Data" should allow you to remove all of the data sto
 
 This is quite an important topic to talk about. Firstly, all data that is stored is stored **locally** (`chrome.storage.local`) on your hard drive meaning, no websites or even other extensions could access this data. None of you data is ever sent to any other location, this can be confirmed by checking the Network Tool on the chrome dev tools, no API requests are made by this extension.
 
-Your data is simply encoded (unlike other chrome extensions like [AutoFill](https://chrome.google.com/webstore/detail/autofill/nlmmgnhgdeffjkdckmikfpnddkbbfkkk?hl=en)). This is not very secure and it your password can be somewhat simply recovered from this encoded version that is stored, so it is recommended that you firstly do not use the password anywhere else and also that you understand that you are exposing it at your own risk.
+Your data is simply encoded (unlike other chrome extensions like [AutoFill](https://chrome.google.com/webstore/detail/autofill/nlmmgnhgdeffjkdckmikfpnddkbbfkkk?hl=en)). This is not very secure and it your password can be somewhat simply recovered from this encoded version that is stored, so it is recommended that you firstly do not use the password anywhere else and also that you understand that you are exposing it at your own risk. **If you want to minimize risks then use a password manager that autofills**
 
 ## Note on the secret key
 
