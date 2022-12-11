@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import NotPresentLayout from "./components/NotPresentLayout";
 import PresentLayout from "./components/PresentLayout";
+import ReadmoreAlert from "./components/ReadmoreAlert";
 import UsePasswordManager from "./components/UsePasswordManager";
 import { Get } from "./types";
 
@@ -24,7 +25,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Box w="xl" h="lg" bgColor="gray.900" p={4}>
+      <Box w="xl" h="xl" bgColor="gray.900" p={4}>
         <Flex direction="column" h="full" w="full">
           <Heading>Cam Moodle Auto Login</Heading>
           <Divider pt={2} />
@@ -43,6 +44,7 @@ const App = () => {
             buttonCounter={buttonCounter}
             setButtonCounter={setButtonCounter}
           ></UsePasswordManager>
+          <ReadmoreAlert />
           <Footer />
         </Flex>
       </Box>

@@ -26,7 +26,7 @@ const UsePasswordManager: React.FC<Props> = ({
     <VStack pt={4} spacing={4} alignItems="flex-start">
       <Divider />
       <Heading fontSize="16">
-        Alternatively, use your own Password Manager?
+        Alternatively, use your own Password Manager!
       </Heading>
       <Divider />
       {usePwdManager ? (
