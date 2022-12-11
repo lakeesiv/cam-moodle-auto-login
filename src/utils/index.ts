@@ -32,28 +32,23 @@ export const RavenAuthLogin = (loginDetails: loginDetails) => {
         "Use password manager autofill: ",
         loginDetails.usePasswordManagerAutofill
       );
+
       const ravenLogInButton: HTMLElement = document.getElementsByClassName(
         "campl-btn"
       )[0] as HTMLElement;
 
       if (!loginDetails?.usePasswordManagerAutofill) {
         injectLoginDetails(loginDetails);
-        // ravenLogInButton.click();
-      } else {
-        let found = false;
-        (function myLoop(i) {
-          setTimeout(function () {
-            const pwd = (document.getElementById("pwd") as HTMLInputElement)
-              .value;
 
-            if (pwd) {
-              if (found) ravenLogInButton.click();
-              console.log("Using password manager autofill");
-              found = true;
-            }
-            if (--i) myLoop(i); //  decrement i and call myLoop again if i > 0
-          }, 400);
-        })(10);
+        ravenLogInButton.click();
+      } else {
+        setTimeout(() => {
+          const pwd = (document.getElementById("pwd") as HTMLInputElement)
+            .value;
+          if (pwd) {
+            ravenLogInButton.click();
+          }
+        }, 1000);
       }
     } else {
       console.log(errorMessageElement.innerText);
