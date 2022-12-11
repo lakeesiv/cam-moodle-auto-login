@@ -44,6 +44,7 @@ const RemoveDataButton: React.FC<RemoveDataButtonDrawerProps> = ({
         {...rest}
         bgColor={setToTrue ? "green.700" : "red.700"}
         py={4}
+        my={8}
         onClick={() => {
           handleClick(toast, setToTrue);
           setButtonCounter(buttonCounter + 1);

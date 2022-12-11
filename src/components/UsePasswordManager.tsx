@@ -14,9 +14,12 @@ const UsePasswordManager: React.FC<Props> = ({
   const [usePwdManager, setUsePwdManager] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log("UsePasswordManager useEffect");
+
     chrome.runtime.sendMessage(
       { type: "GetUsePasswordManagerAutofill" } as Get,
       (res) => {
+        console.log("UsePasswordManager useEffect res: ", res);
         setUsePwdManager(res as boolean);
       }
     );
@@ -29,7 +32,7 @@ const UsePasswordManager: React.FC<Props> = ({
         Alternatively, use your own Password Manager!
       </Heading>
       <Divider />
-      {usePwdManager ? (
+      {!usePwdManager ? (
         <VStack w="full" spacing="2">
           <Text fontSize={14}>
             Alternatively if you have a password manager that autofills (eg.
@@ -44,7 +47,7 @@ const UsePasswordManager: React.FC<Props> = ({
           />
         </VStack>
       ) : (
-        <VStack>
+        <VStack w="full" spacing="2">
           <Text fontSize={14}>
             Want to turn off using your password manager? Press the button below
           </Text>
