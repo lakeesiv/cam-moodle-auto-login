@@ -2,7 +2,7 @@
   "name": "Cam Moodle Auto Login",
   "description": "Automatically relogs you into moodle, after session timeout",
   "manifest_version": 2,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
