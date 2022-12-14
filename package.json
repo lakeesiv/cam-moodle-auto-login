@@ -1,6 +1,6 @@
 {
   "name": "cam-moodle-auto-login",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Automatically relogs you into moodle, after session timeout",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
