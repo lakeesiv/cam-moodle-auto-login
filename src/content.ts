@@ -9,11 +9,12 @@ import {
 setTimeout(() => {
   const page = detectPage(window.location.toString());
   switch (page) {
+    case "medschl":
     case "moodle":
-      clickLoginByRaven();
+      clickLoginByRaven(page);
       break;
     case "raven":
-      chrome.runtime.sendMessage({ type: "GetEncrpytedLoginDetails" } as Get);
+      chrome.runtime.sendMessage({ type: "GetEncryptedLoginDetails" } as Get);
       break;
     default:
       break;

@@ -28,7 +28,7 @@ export interface SetEncrpytedLoginDetails {
 
 export interface Get {
   type:
-    | "GetEncrpytedLoginDetails"
+    | "GetEncryptedLoginDetails"
     | "GetLoginDetailsPresent"
     | "GetUsePasswordManagerAutofill";
 }

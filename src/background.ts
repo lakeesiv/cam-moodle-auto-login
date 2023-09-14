@@ -39,14 +39,14 @@ chrome.runtime.onMessage.addListener(
           } as EncryptedLoginDetailsObject);
         });
 
-      case "GetEncrpytedLoginDetails":
+      case "GetEncryptedLoginDetails":
         chrome.storage.local.get(["encryptedLoginDetails"], (res) => {
           // sendResponse(res);
           const response = res as {
             encryptedLoginDetails: encryptedLoginDetails;
           };
 
-          console.log("GetEncrpytedLoginDetails:" + JSON.stringify(response));
+          console.log("GetEncryptedLoginDetails:" + JSON.stringify(response));
 
           const message: ReturnEncryptedLoginDetails = {
             type: "ReturnEncryptedLoginDetails",

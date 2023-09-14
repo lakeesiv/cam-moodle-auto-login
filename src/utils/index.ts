@@ -13,12 +13,25 @@ const Decipher = decipher(secret);
 /**
  * @description Selects login using Raven button on the moodle page
  */
-export const clickLoginByRaven = () => {
+export const clickLoginByRaven = (page: "moodle" | "medschl") => {
   try {
-    const loginByRavenButton: HTMLElement = document.getElementsByClassName(
-      "btn btn-secondary btn-lg btn-block mt-3"
-    )[0] as HTMLElement;
-    loginByRavenButton.click();
+    if(page === "moodle") {
+      for (const button of Array.from(document.getElementsByClassName(
+          "btn btn-secondary"
+      )) as HTMLElement[]) {
+        const buttonSrc = button.querySelector("img")?.src
+        if (buttonSrc && buttonSrc.includes("idp")) {
+          button.click()
+          return
+        }
+      }
+    }
+    else{
+      (document.getElementsByClassName(
+          "raven-button"
+      )[0] as HTMLElement).click()
+    }
+
   } catch (error) {
     console.log("error in moodle page", error);
   }
@@ -69,12 +82,11 @@ export const ravenLogin = (loginDetails: loginDetails) => {
  * @param url url of the page
  * @returns Either "raven" or "moodle" or null
  */
-export const detectPage = (url: string): "raven" | "moodle" | null => {
-  return url.includes("raven.cam.ac.uk/auth/authenticate.html")
-    ? "raven"
-    : url === "https://www.vle.cam.ac.uk/login/index.php"
-    ? "moodle"
-    : null;
+export const detectPage = (url: string): "raven" | "moodle" | "medschl" | null => {
+  return url.includes("raven.cam.ac.uk/auth/authenticate.html") ? "raven"
+      : url === "https://www.vle.cam.ac.uk/login/index.php" ? "moodle"
+          : url === "https://vle.medschl.cam.ac.uk/login/index.php" ? "medschl"
+              : null;
 };
 
 /**
