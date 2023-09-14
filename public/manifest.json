@@ -21,6 +21,7 @@
     {
       "matches": [
         "https://www.vle.cam.ac.uk/login/*",
+        "https://vle.medschl.cam.ac.uk/login/*",
         "https://raven.cam.ac.uk/auth/*",
         "https://legacy.raven.cam.ac.uk/auth/*"
       ],
